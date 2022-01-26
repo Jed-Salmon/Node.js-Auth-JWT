@@ -1,8 +1,8 @@
-#### Mongoose Hook
+### Mongoose Hook
 
 A special function which fires after a certain mongoose event happens. E.g. a hook which fires a function after new documents are saved or deleted to the database.
 
-#### Password Hashing
+### Password Hashing
 
 At a basic level there are two steps involved in hashing:
 
@@ -15,7 +15,7 @@ A salt is a string of characters separate from the password itself, so the end r
 
 When a user tries to login we take the password they enter, add the salt to that password, hash it through the same hashing algorithm and then compare it with their hashed password stored in the database.
 
-#### Cookies
+### Cookies
 
 A way to store data in a user's browser. Can be used to track internet activity by services like google analytics.
 
@@ -34,7 +34,7 @@ If you are creating a site with 'state changing endpoints' for authenticated use
 
 See: https://owasp.org/www-community/attacks/csrf
 
-#### Authenticating with Cookies and JSON Web Tokens (JWT)
+### Authenticating with Cookies and JSON Web Tokens (JWT)
 
 First of all the user logs in via a web form from our website which sends a request to the server with their credentials an email and a password. The server then checks those credentials, the email and password against those stored in a database for that user. If they are correct the server then creates a json web token for the user and it sends it to the browser where it can be stored in a cookie. The json web token contains encoded data about that user to identify them, so for as long as they have this token in the cookie then they are considered logged in and authenticated.
 
@@ -46,7 +46,7 @@ If the token is missing or not valid the user is not authenticated and the serve
 
 To repeat, using JWT's inside cookies for authentication does potentially open up your site to cross-site request forgery attacks. Now that means that a malicious site can take a user's authentication cookie and then make requests to our server posing as that user. If our server exposes state changing end points then this is a security risk because it means that the malicious site can then manipulate your user data and potentially access more of it.
 
-#### JWT Creation and Verification Process
+### JWT Creation and Verification Process
 
 https://jwt.io
 
