@@ -1,0 +1,50 @@
+<%- include('partials/header'); -%>
+
+<form>
+  <h2>Log in</h2>
+  <label for="email">Email</label>
+  <input type="text" id="email" name="email" required />
+  <label for="password">Password</label>
+  <input type="password" id="password" name="password" required />
+  <div class="error"></div>
+  <button>Log in</button>
+</form>
+
+<!-- script to handle submission and send values to server  -->
+<script>
+  const form = document.querySelector('form');
+  const error = document.querySelector('.error');
+
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+
+    // reset errors
+    error.textContent = '';
+
+    // get the input values
+    const email = form.email.value;
+    const password = form.password.value;
+    // value is accessible due to the name attribute defined
+
+    try {
+      const res = await fetch('/login', {
+        method: 'POST',
+        body: JSON.stringify({ email, password }),
+        headers: { 'Content-Type': 'application/json' },
+      });
+
+      const data = await res.json();
+      console.log(data);
+      if (data.errors) {
+        error.textContent = data.errors.password;
+      }
+      if (data.user) {
+        location.assign('/'); // redirect
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  });
+</script>
+
+<%- include('partials/footer'); -%>
