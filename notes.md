@@ -56,7 +56,7 @@ The token header is a bit like metadata for the token and holds the algorithm us
 
 The payload is data encoded into the JWT, which could be a userID and is used to identify the user. It's important no sensitive data is put inside this payload in case a token is intercepted by somebody, because it can be decoded by anyone that knows how. If we change the data in the payload then this changes the resulting encoded token (the corresponding string for the payload changes).
 
-The verification signature is used to verify the token on the server. This ties everything together and it makes the JWT secure. It makes ure that tokens are not tampered with on the client and is a bit like a stamp of authenticity from the server.
+The verification signature is used to verify the token on the server. This ties everything together and it makes the JWT secure. It makes sure that tokens are not tampered with on the client and is a bit like a stamp of authenticity from the server.
 
 How do they work together?
 
